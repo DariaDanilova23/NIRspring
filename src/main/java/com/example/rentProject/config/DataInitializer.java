@@ -28,20 +28,24 @@ public class DataInitializer implements ApplicationRunner{
 
      @Override
     public void run(ApplicationArguments args) throws Exception {
-        // Инициализация данных для TypeOfRoom
-        List<TypeOfRoom> initialRoomData = Arrays.asList(
-                new TypeOfRoom ("Секция/Подъезд"),
-            new TypeOfRoom ("Этаж"),
-            new TypeOfRoom ("Квартира"),
-            new TypeOfRoom ("Коридор"),
-            new TypeOfRoom ("Санузел"),
-            new TypeOfRoom ("Ванная"),
-            new TypeOfRoom ("Кухня"),
-            new TypeOfRoom ("Балкон"),
-            new TypeOfRoom ("Всроенный шкаф")
-                // Добавьте столько объектов TypeOfRoom, сколько вам нужно
+        if (typeOfRoomRepository.count() == 0) {
+            // Инициализация данных для TypeOfRoom
+            List<TypeOfRoom> initialRoomData = Arrays.asList(
+                    new TypeOfRoom ("Секция/Подъезд"),
+                new TypeOfRoom ("Этаж"),
+                new TypeOfRoom ("Квартира"),
+                new TypeOfRoom ("Коридор"),
+                new TypeOfRoom ("Санузел"),
+                new TypeOfRoom ("Ванная"),
+                new TypeOfRoom ("Кухня"),
+                new TypeOfRoom ("Балкон"),
+                new TypeOfRoom ("Всроенный шкаф")
         );
+        // Сохранение данных в репозиторий typeOfRoomRepository
+        typeOfRoomRepository.saveAll(initialRoomData);
+        }
 
+        if (typeOfRenterRepository.count() == 0) {
         // Инициализация данных для TypeOfRenter
         List<TypeOfRenter> initialRenterData = Arrays.asList(
                 new TypeOfRenter ("Квартиросъемщик"),
@@ -49,10 +53,9 @@ public class DataInitializer implements ApplicationRunner{
                 new TypeOfRenter( "Администрация ТСЖ")
                 // Добавьте столько объектов TypeOfRenter, сколько вам нужно
         );
-
-        // Сохранение данных в соответствующих репозиториях
-        typeOfRoomRepository.saveAll(initialRoomData);
+        // Сохранение данных в репозиторий typeOfRenterRepository
         typeOfRenterRepository.saveAll(initialRenterData);
+    }
     }
     /* 
     @Bean
