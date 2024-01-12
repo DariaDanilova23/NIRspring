@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Типы арендаторов</title>
+</head>
+<body>
+    <h1>Типы арендаторов</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="entity : ${yourEntities}">
+                <td th:text="${entity.id}"></td>
+                <td th:text="${entity.name}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
