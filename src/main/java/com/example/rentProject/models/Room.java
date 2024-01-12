@@ -54,4 +54,9 @@ public class Room {
     @ManyToOne
     @JoinColumn(name = "building_id") // Это поле для хранения внешнего ключа
     private Building building;
+
+    //зависимость от владельца 
+    @ManyToOne
+    @JoinColumn(name = "owner_id") // Это поле для хранения внешнего ключа
+    private Owner owner;
 }

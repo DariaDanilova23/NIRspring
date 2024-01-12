@@ -1,4 +1,5 @@
 package com.example.rentProject.models;
+
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -13,20 +14,16 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name = "typeOfRoom")
+@Table(name = "owner")
 @AllArgsConstructor
 @NoArgsConstructor
-public class TypeOfRoom {
+public class Owner {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String name;
-
+    private String FIO;
+    
     //Первичный ключ для Помещения 
-    @OneToMany(mappedBy = "typeRoom")
+    @OneToMany(mappedBy = "owner")
     private List<Room> rooms;
-
-    public TypeOfRoom(String name) {
-        this.name = name;
-    }
 }

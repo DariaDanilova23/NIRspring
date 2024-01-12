@@ -25,4 +25,8 @@ public class TypeOfRenter {
     //Первичный ключ для Помещения 
     @OneToMany(mappedBy = "typeRenter")
     private List<Room_Renter> roomRenters;
+
+    public TypeOfRenter(String name) {
+        this.name = name;
+    }
 }
